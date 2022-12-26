@@ -82,7 +82,7 @@ io.on("connection", (socket) => {
         const Player = Arry.player[i];
         io.emit("newPlayers", Player.x, Player.y, Player.width, Player.height, Player.angle, Player.speed, Player.health, Player.color, Player.img, Player.name);
       }
-      console.log(Arry.player)
+      
     })
   socket.on("playerup",
     (x, y, angle, speed, health, name)=> {
