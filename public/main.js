@@ -816,7 +816,7 @@ socket.on("newPlayers", (x, y, width, height, angle, speed, health, color, img, 
     Gamer.color = color;
   }
   let ninc=0;
-  while(ninc <100000){
+  while(ninc <10000){
     ninc++
   }
 });
@@ -904,10 +904,10 @@ function ShowHide() {
 
 LOGIN_BTN.addEventListener("click", ()=> {
   if (USERNAME.value && NEW_OR_OLD.checked && PASSWORD.value && localStorage.getItem("fastLogin") == null) {
-    socket.emit("NewLogin", USERNAME.value.toUpperCase(), PASSWORD.value, false);
+    socket.emit("NewLogin", USERNAME.value, PASSWORD.value, false);
     LOGIN_ERROR.innerHTML = "Username is already in use,try adding a number or change the name.";
   } else if (USERNAME.value&&!NEW_OR_OLD.checked && PASSWORD.value) {
-    socket.emit("OldLogin", USERNAME.value.toUpperCase(), PASSWORD.value, false);
+    socket.emit("OldLogin", USERNAME.value, PASSWORD.value, false);
     LOGIN_ERROR.innerHTML = "Username or Password is incorrect.Please try again";
   }
   if (localStorage.getItem("fastLogin") == "true" && NEW_OR_OLD.checked) {
@@ -918,7 +918,7 @@ LOGIN_BTN.addEventListener("click", ()=> {
 socket.on("NewLogin",
   (name, password, cond)=> {
     if (cond) {
-      User.name = name.toUpperCase();
+      User.name = name;
       LOGIN_ERROR.innerHTML = "";
       LOGIN_PAGE.style.display = "none"
       recoverCond = true;
@@ -928,7 +928,7 @@ socket.on("NewLogin",
 socket.on("OldLogin",
   (name, password, cond)=> {
     if (cond) {
-      User.name = name.toUpperCase();
+      User.name = name;
       LOGIN_ERROR.innerHTML = "";
       LOGIN_PAGE.style.display = "none";
       localStorage.setItem("fastLogin", "true");

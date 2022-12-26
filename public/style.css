@@ -183,9 +183,7 @@ button:hover {
   border-radius: 20px;
   
 }
-#username{
-  text-transform: uppercase;
-}
+
 #LoginForm button:active {
   color: red;
 }
