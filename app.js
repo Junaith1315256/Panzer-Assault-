@@ -19,6 +19,7 @@ const Arry = {
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {
+  
   socket.on('disconnect', () => {
     for (let i = 0; i < Arry.player.length; i++) {
       const Player = Arry.player[i];
@@ -81,7 +82,7 @@ io.on("connection", (socket) => {
         const Player = Arry.player[i];
         io.emit("newPlayers", Player.x, Player.y, Player.width, Player.height, Player.angle, Player.speed, Player.health, Player.color, Player.img, Player.name);
       }
-      
+      console.log(Arry.player)
     })
   socket.on("playerup",
     (x, y, angle, speed, health, name)=> {
@@ -104,7 +105,7 @@ io.on("connection", (socket) => {
   socket.on("NewLogin",
     (name, password, cond)=> {
       for (let i = 0; i < Arry.details.length; i++) {
-        if (Arry.details[i].name !== name) {
+        if (Arry.details[i].name.toUpperCase() !== name.toUpperCase()) {
           cond = true;
         } else {
           cond = false;
@@ -125,7 +126,7 @@ io.on("connection", (socket) => {
           if (Arry.details[i].password === password) {
             cond = true;
             io.emit("updatePlayer",name,Details.cost,Details.speed ,Details.reload ,Details.damage,Details.ammo,Details.bps,Details.health ,Details.range,Details.amount,Details.gold);
-            console.log(Details);
+          
             break;
           }
         } else {
@@ -165,7 +166,7 @@ app.get('/adminSMJunaith2006', (req, res) => {
   }
   res.send(myMsgs.join("<br>"));
 })
-const PORT = process.env.PORT||3000;
+const PORT = process.env.PORT||2000;
 server.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });
