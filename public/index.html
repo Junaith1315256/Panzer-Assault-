@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <title>Panzer Assult</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <div id="gamerBody">
+    <div id="game">
+      <canvas id="canvas1"></canvas>
+    </div>
+  
+    <div class="coins gCoin">
+      
+    </div>
+    <canvas id="map"></canvas>
+    <div id="chat">
+      <span></span>
+    </div>
+    <div id="gameCover"></div>
+    <button id="chat_btn"><span class="material-icons">
+      chat
+    </span></button>
+    <input type="text" id="chat_text">
+    <div id="PlayerInfo">
+      <div id="health"></div>
+      <div id="bullets">
+      </div>
+      <div>
+        <div id="coordinate">
+        </div>
+      </div>
+    </div>
+    <div id="mainBody">
+      <div class="coins mCoin">
+    </div>
+      <div class="id">
+        <div id="userName">
+        </div>
+      </div>
+      <div id="upgrades">
+        <button type="submit" id="sp" class="upBtn"><div>
+          5m/s
+        </div>
+          <span class="amo">100$</span><span> +5</span></button>
+        <button type="submit" id="re" class="upBtn"><div>
+          10s
+        </div>
+          <span class="amo">100$</span> <span>-0.1</span></button>
+        <button type="submit" id="dg" class="upBtn"><div>
+          100
+        </div>
+          <span class="amo">100$</span><span>+10</span></button>
+        <button type="submit" id="mb" class="upBtn"><div>
+          5b
+        </div>
+          <span class="amo">100$</span><span>+10</span></button>
+        <button type="submit" id="bps" class="upBtn"><div>
+          3s
+        </div>
+          <span class="amo">100$</span><span>-0.1s</span></button>
+        <button type="submit" id="he" class="upBtn"><div>
+          100hp
+        </div>
+          <span class="amo">100$</span><span>+10</span></button>
+        <button type="submit" id="rg" class="upBtn"><div>
+          150r
+        </div>
+          <span class="amo">100$</span><span>+10</span></button>
+          <button type="submit" id="am" class="upBtn"><div>
+          150r
+        </div>
+          <span class="amo">100$</span><span>+10</span></button>
+      </div>
+      <img src="/ProPlayer.png" alt="" id="img">
+      <button type="submit" id="play">Play</button>
+      <button type="submit" class = "buytank" onclick="BuyTempTank()">1000$</button>
+    </div>
+    <div id="loginbody">
+      <img id="loginImg" src="/Wallpaper.png" alt="/GameBackground.png" />
+
+    <div id="LoginForm">
+      <label for="neworold">New</label>
+      <input type="checkbox" name="" id="neworold">      <h1>Panzer Assult</h1>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" id="username" required>
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" required>
+        <button type="submit" onclick="ShowHide()" id="showhide">show</button>
+      </div>
+
+      <button href="http://localhost:3000" id="login"type="submit">log in</button>
+      <input type="checkbox">
+      <p>
+        Accept <a href="/terms.html">Terms and conditions</a>
+      </p>
+      <h5 id="errorLogin" style="color: red"></h5>
+    </div>
+     <button type="submit" class="Hacks"onclick="Hacks()"></button>
+  </div>
+  <img src="/Player.png" alt="Player.png" id="playerI" class="gameimg">
+  <img src="/ProPlayer.png" alt="ProPlayer.png" id="proplayer" class="gameimg">
+  <img src="/Block.png" alt="Blocks.png" id="blocks" class="gameimg">
+  <img src="/LowerPart.png" alt="LowerPart.png" id="lowerpart" class="gameimg">
+  <audio src="/shootSou.mp3" id="shootAud" class="gameimg"></audio>
+  <audio src="/engineSou.mp3" id="engineAud" class="gameimg"></audio>
+  <audio src="/Bk.mp3" id="bkAud" class="gameimg"></audio>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
