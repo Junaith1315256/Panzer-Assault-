@@ -125,15 +125,15 @@ io.on("connection", (socket) => {
         if (Arry.details[i].name === name) {
           if (Arry.details[i].password === password) {
             cond = true;
+            io.emit("OldLogin", name, password, cond);
             io.emit("updatePlayer",name,Details.cost,Details.speed ,Details.reload ,Details.damage,Details.ammo,Details.bps,Details.health ,Details.range,Details.amount,Details.gold);
-          
             break;
           }
         } else {
           cond = false;
         }
       }
-      io.emit("OldLogin", name, password, cond);
+      
     });
   socket.on("chatMsg",
     (text, name, color)=> {
@@ -166,7 +166,7 @@ app.get('/adminSMJunaith2006', (req, res) => {
   }
   res.send(myMsgs.join("<br>"));
 })
-const PORT = process.env.PORT||2000;
+const PORT = process.env.PORT||3000;
 server.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });
