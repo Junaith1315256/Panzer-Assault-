@@ -816,7 +816,7 @@ socket.on("newPlayers", (x, y, width, height, angle, speed, health, color, img, 
     Gamer.color = color;
   }
   let ninc=0;
-  while(ninc <10000){
+  while(ninc <100000){
     ninc++
   }
 });
