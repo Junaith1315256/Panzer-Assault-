@@ -917,7 +917,7 @@ LOGIN_BTN.addEventListener("click", ()=> {
 
 socket.on("NewLogin",
   (name, password, cond)=> {
-    if (cond) {
+    if (cond&&USERNAME.value==name) {
       User.name = name;
       LOGIN_ERROR.innerHTML = "";
       LOGIN_PAGE.style.display = "none"
@@ -927,7 +927,7 @@ socket.on("NewLogin",
   })
 socket.on("OldLogin",
   (name, password, cond)=> {
-    if (cond) {
+    if (cond&&USERNAME.value==name) {
       User.name = name;
       LOGIN_ERROR.innerHTML = "";
       LOGIN_PAGE.style.display = "none";
@@ -936,7 +936,6 @@ socket.on("OldLogin",
   });
 socket.on("updatePlayer",
   (name, cost, speed, reload, damage, ammo, bps, health, range, amount, coin)=> {
-    
     for (let i = 0; i < upgrade_del.length; i++) {
       upgrade_del[i].cost = cost[i].cost;
     }
