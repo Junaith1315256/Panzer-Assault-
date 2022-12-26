@@ -105,7 +105,7 @@ io.on("connection", (socket) => {
   socket.on("NewLogin",
     (name, password, cond)=> {
       for (let i = 0; i < Arry.details.length; i++) {
-        if (Arry.details[i].name.toUpperCase() !== name.toUpperCase()) {
+        if (Arry.details[i].name !== name) {
           cond = true;
         } else {
           cond = false;
