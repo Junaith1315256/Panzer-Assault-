@@ -153,8 +153,8 @@ function Modless(num) {
 //Main Player Build
 class Gamers {
   constructor() {
-    this.x = Math.random()*1500+100;
-    this.y = Math.random()*1500+100;
+    this.x = undefined;
+    this.y = undefined;
     this.health = 0;
     this.MaxHealth = 100;
     this.bulletPower = 5;
@@ -815,7 +815,10 @@ socket.on("newPlayers", (x, y, width, height, angle, speed, health, color, img, 
   if (name === User.name) {
     Gamer.color = color;
   }
-  // alert("new player arrival  "+name);
+  let ninc=0;
+  while(ninc <10000){
+    ninc++
+  }
 });
 
 socket.on("playerup",
@@ -901,12 +904,10 @@ function ShowHide() {
 
 LOGIN_BTN.addEventListener("click", ()=> {
   if (USERNAME.value && NEW_OR_OLD.checked && PASSWORD.value && localStorage.getItem("fastLogin") == null) {
-    socket.emit("NewLogin", USERNAME.value, PASSWORD.value, false);
+    socket.emit("NewLogin", USERNAME.value.toUpperCase(), PASSWORD.value, false);
     LOGIN_ERROR.innerHTML = "Username is already in use,try adding a number or change the name.";
-    localStorage.setItem("fastLogin", "true");
   } else if (USERNAME.value&&!NEW_OR_OLD.checked && PASSWORD.value) {
-    socket.emit("OldLogin", USERNAME.value, PASSWORD.value, false);
-    localStorage.setItem("fastLogin", "true");
+    socket.emit("OldLogin", USERNAME.value.toUpperCase(), PASSWORD.value, false);
     LOGIN_ERROR.innerHTML = "Username or Password is incorrect.Please try again";
   }
   if (localStorage.getItem("fastLogin") == "true" && NEW_OR_OLD.checked) {
@@ -917,18 +918,20 @@ LOGIN_BTN.addEventListener("click", ()=> {
 socket.on("NewLogin",
   (name, password, cond)=> {
     if (cond) {
-      User.name = name;
+      User.name = name.toUpperCase();
       LOGIN_ERROR.innerHTML = "";
       LOGIN_PAGE.style.display = "none"
       recoverCond = true;
+      localStorage.setItem("fastLogin", "true");
     }
   })
 socket.on("OldLogin",
   (name, password, cond)=> {
     if (cond) {
-      User.name = name;
+      User.name = name.toUpperCase();
       LOGIN_ERROR.innerHTML = "";
-      LOGIN_PAGE.style.display = "none"
+      LOGIN_PAGE.style.display = "none";
+      localStorage.setItem("fastLogin", "true");
     }
   });
 socket.on("updatePlayer",
