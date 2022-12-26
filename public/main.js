@@ -936,7 +936,7 @@ socket.on("OldLogin",
   });
 socket.on("updatePlayer",
   (name, cost, speed, reload, damage, ammo, bps, health, range, amount, coin)=> {
-    console.log(cost)
+    
     for (let i = 0; i < upgrade_del.length; i++) {
       upgrade_del[i].cost = cost[i].cost;
     }
